@@ -1,0 +1,16 @@
+import re  #regex ka chota bhai hai ye
+def read_no(numbers):
+    try:
+        with open(numbers, 'r', encoding='utf-8') as file: #utf8 helps to encode file
+            content = file.read()  #file ko padne ke kaam aata hai
+            
+            numbers = re.findall(r'\d+', content)#findall utf ko shambhalne ke liye
+            numbers = list(map(int, numbers))
+            print("Total numbers found: {len(numbers)}")
+            print("Numbers: {numbers}")
+            return numbers 
+    except FileNotFoundError:
+        print("Error: File not found. Please provide a valid file path.")
+    except Exception as e:
+        print("An error occurred: {e}")
+
